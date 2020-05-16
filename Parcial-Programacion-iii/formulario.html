@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- LEGAJO: 111574
+    NOMBRE:Agustin Alejandro Ramall -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Preventa</title>
+    <link rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.css">
+
+    <script>
+        function validarForm(){
+            let txtDocumento = document.getElementById('txtDocumento').value;
+            let cmbDia = document.getElementById('cmbDia').value;
+            let cmbBancario = document.getElementById('cmbBancario').value;
+            let txtCantEntradas = document.getElementById('txtCantEntradas').value;
+            let mensaje = "";
+
+            if(txtDocumento == "")
+                mensaje += '<li  class="list-group-item list-group-item-danger">Cargue el Documento</li>'; 
+            
+            if(cmbDia == "")
+            mensaje += '<li  class="list-group-item list-group-item-danger">Elija Dia</li>'; 
+            
+            if(cmbBancario == "")
+            mensaje += '<li  class="list-group-item list-group-item-danger">Elija Promoción Bancaria </li>'; 
+
+            if(txtCantEntradas == "")
+            mensaje += '<li  class="list-group-item list-group-item-danger">Cargue la Cantidad de Entradas</li>'; 
+
+            if(mensaje != "")
+            {
+                document.getElementById('divAlerta').innerHTML = "<ul class= list-group>" + mensaje + "</ul><button type='button' class='close' data-dismiss='alert' aria-label='Close' id='btnCerrar'  onclick='cerrarAlerta()'><span aria-hidden='true'>×</span></button>";
+                document.getElementById('divAlerta').style.display = 'block'
+            }
+            else
+                document.getElementById('AlertaDeConfirmacion').style.display = 'block'; 
+                
+
+        }
+        function cerrarAlerta()
+        {
+            document.getElementById('divAlerta').style.display = 'none';
+        }
+
+    </script>
+
+
+
+</head>
+<body>
+    <div class="header bg-danger text-white w-100 h-50 text-sm-center text-md-center text-lg-center text-xl-center">
+
+        <h1 class="display-4">Formulario de Preventa</h1>
+        
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="alert alert-success" role="alert" id="AlertaDeConfirmacion"> 
+                    Formulario completado con exito
+                   </div>
+                 <div class="alert alert-danger alert-dismissible fade show" role="alert" id="divAlerta">
+                     Algo de alerta
+                     <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="btnCerrar" onclick="cerrarAlerta()">
+                         <span aria-hidden="true">&times;</span>
+                       </button>
+                </div>
+
+                <form>
+                    <div class="form-group">
+                        <label>Numero de Documento</label>
+                        <input type="number" name="Documneto" id="txtDocumento" placeholder="Número de Documento">
+                    </div>
+                    <div>
+                        <label>Elegir Dia </label>
+                        <select class="form-control" id="cmbDia">
+                            <option value="">Seleccione</option>
+                            <option value="1">Viernes</option>
+                            <option value="2">Sabado</option>
+                            <option value="3">Domingo</option>
+                            <option value="4">Pase Libre</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Promoción Bancaria </label>
+                        <select class="form-control" id="cmbBancario">
+                            <option value="">Seleccione</option>
+                            <option value="1">Plan z</option>
+                            <option value="2">Bancor</option>
+                            <option value="3">Otros Bancos</option>
+                            
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Cantidad de entradas</label>
+                        <input type="number" name="Documneto" id="txtCantEntradas" placeholder="Cantidad de Entradas">
+                    </div>
+
+                    <input class= "btn btn-primary" type="button" value="Preventa" onclick="validarForm()" />
+
+
+
+
+
+                </form>
+
+
+                
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+    <script>
+        document.getElementById('divAlerta').style.display = 'none'
+        document.getElementById('AlertaDeConfirmacion').style.display = 'none'
+    </script>
+
+
+
+</body>
+</html>
